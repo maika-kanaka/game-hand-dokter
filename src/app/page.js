@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./page.module.css";
 import { Hands } from '@mediapipe/hands';
 import { Camera } from '@mediapipe/camera_utils';
@@ -9,12 +9,17 @@ export default function Home()
 {
   const [page, setPage] = useState('home');
   const [score, setScore] = useState(0);
-  const [lastScore, setLastScore] = useState(0);
+  const [lastScore, setLastScore] = useState(null);
   const [maxHealth, setMaxHealth] = useState(5);
   const [countdown, setCountdown] = useState(30);
   const [health, setHealth] = useState(maxHealth * 19);
-
   const [isGameFinish, setIsGameFinish] = useState(false);
+
+  const isGameFinishRef = useRef(isGameFinish);
+
+  useEffect(() => {
+    isGameFinishRef.current = isGameFinish;
+  }, [isGameFinish]);
 
   useEffect(() => {
     if(health <= 0)
@@ -25,9 +30,9 @@ export default function Home()
     }
   }, [health]);
 
-  const showScorePage = () => {
-      setLastScore(Math.floor(score / 19));
-
+  useEffect(() => {
+    if(lastScore !== null)
+    {
       // Stop item falls
       document.getElementById('gameArea').remove;
 
@@ -40,6 +45,12 @@ export default function Home()
       setTimeout(() => {
         window.location.reload();
       }, 15000);
+    }
+  }, [lastScore]);
+
+  const showScorePage = () => {
+      setLastScore(Math.floor(score / 19));
+      setIsGameFinish(true); // Ensure game is marked as finished
   };
 
   const changePage = (page) => 
@@ -48,8 +59,6 @@ export default function Home()
 
     if(page === 'game'){
       document.getElementById('backsound-game').play();
-
-      runItemFalls();
 
       runMoveHand();
 
@@ -130,10 +139,10 @@ export default function Home()
     videoElement.style.display = 'none';
     document.body.appendChild(videoElement);
 
-    const hands = new Hands({
+    var hands = new Hands({
       locateFile: (file) => `mediapipe/${file}`,
     });
-
+    
     hands.setOptions({
       maxNumHands: 1,
       modelComplexity: 1,
@@ -162,9 +171,10 @@ export default function Home()
 
     camera.start();
 
-    const checkCollision = () => {
-      if (isGameFinish) return;
+    // Load asset then runItemFalls
+    runItemFalls();
 
+    const checkCollision = () => {
       const handRect = handSensor.getBoundingClientRect();
       const items = document.querySelectorAll('main img.item-falls');
 
@@ -194,10 +204,12 @@ export default function Home()
           document.getElementById('backsound-catch').play();
 
           // Add score
-          if (item.src.includes('/items/3.png') || item.src.includes('/items/4.png') || item.src.includes('/items/5.png') || item.src.includes('/items/6.png') || item.src.includes('/items/7.png') || item.src.includes('/items/8.png')) {
-            setScore((prevScore) => prevScore - 1);
-          } else {
-            setScore((prevScore) => prevScore + 1);
+          if (!isGameFinishRef.current) {  // Check if the game is not finished
+            if (item.src.includes('/items/3.png') || item.src.includes('/items/4.png') || item.src.includes('/items/5.png') || item.src.includes('/items/6.png') || item.src.includes('/items/7.png') || item.src.includes('/items/8.png')) {
+              setScore((prevScore) => prevScore - 1);
+            } else {
+              setScore((prevScore) => prevScore + 1);
+            }
           }
         }
       });
@@ -251,7 +263,7 @@ export default function Home()
             
           </div>
 
-          {health <= 0 || isGameFinish && (
+          {isGameFinish === true && (
             <div id="modal-game-over" onClick={() => window.location.reload()} style={{
               position: 'fixed',
               top: 0,
