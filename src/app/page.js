@@ -131,7 +131,7 @@ export default function Home()
     document.body.appendChild(videoElement);
 
     const hands = new Hands({
-      locateFile: (file) => `/mediapipe/${file}`,
+      locateFile: (file) => `mediapipe/${file}`,
     });
 
     hands.setOptions({
