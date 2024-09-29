@@ -82,7 +82,7 @@ export default function Home()
       const createFallingItem = (item) => {
         const itemElement = document.createElement('img');
         itemElement.classList.add('item-falls');
-        itemElement.src = `/items/${item.name}`;
+        itemElement.src = `items/${item.name}`;
         itemElement.style.position = 'absolute';
         itemElement.style.left = `${Math.random() * (gameAreaRect.width - item.width)}px`;
         itemElement.style.top = '-50px';
