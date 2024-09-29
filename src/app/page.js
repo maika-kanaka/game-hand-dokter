@@ -53,18 +53,16 @@ export default function Home()
       setIsGameFinish(true); // Ensure game is marked as finished
   };
 
-  const changePage = (page) => 
-  {
+  const changePage = (page) => {
     setPage(page);
 
-    if(page === 'game'){
+    if (page === 'game') {
       document.getElementById('backsound-game').play();
 
+      // Ensure MediaPipe is fully loaded before starting the game
       runMoveHand();
-
-      startCountdown();
     }
-  }
+  };
 
   const startCountdown = async () => {
     setInterval(() => {
@@ -214,6 +212,8 @@ export default function Home()
         }
       });
     };
+
+    startCountdown();
 
     const animationFrame = () => {
       checkCollision();
