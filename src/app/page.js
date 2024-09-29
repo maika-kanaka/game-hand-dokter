@@ -73,7 +73,7 @@ export default function Home()
 
   const runItemFalls = async () => {
     try {
-      const response = await fetch('/items/lists.json');
+      const response = await fetch('items/lists.json');
       const itemList = await response.json();
       
       const gameArea = document.getElementById('gameArea');
