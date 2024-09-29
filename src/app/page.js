@@ -204,13 +204,13 @@ export default function Home()
           document.getElementById('backsound-catch').play();
 
           // Add score
-          // if (!isGameFinishRef.current) {  // Check if the game is not finished
+          if (!isGameFinishRef.current) {  // Check if the game is not finished
             if (item.src.includes('/items/3.png') || item.src.includes('/items/4.png') || item.src.includes('/items/5.png') || item.src.includes('/items/6.png') || item.src.includes('/items/7.png') || item.src.includes('/items/8.png')) {
               setScore((prevScore) => prevScore - 1);
             } else {
               setScore((prevScore) => prevScore + 1);
             }
-          // }
+          }
         }
       });
     };
