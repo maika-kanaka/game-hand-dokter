@@ -11,7 +11,7 @@ export default function Home()
   const [score, setScore] = useState(0);
   const [lastScore, setLastScore] = useState(null);
   const [maxHealth, setMaxHealth] = useState(5);
-  const [countdown, setCountdown] = useState(30);
+  const [countdown, setCountdown] = useState(120);
   const [health, setHealth] = useState(maxHealth * 19);
   const [isGameFinish, setIsGameFinish] = useState(false);
 
