@@ -219,19 +219,19 @@ export default function Home()
 
   return (
     <main className={styles.main}>
-      <audio id="backsound-game" loop><source src="/audios/concall.mp3" type="audio/mp3" /></audio>
-      <audio id="backsound-winner" loop><source src="/audios/game-winner.mp3" type="audio/mp3" /></audio>
-      <audio id="backsound-loser" loop><source src="/audios/game-over.mp3" type="audio/mp3" /></audio>
-      <audio id="backsound-catch" loop><source src="/audios/flip-correct.mp3" type="audio/mp3" /></audio>
-      <img id="handSensor" src="/imgs/hand-sensor.png" style={{display: page === 'game' ? 'block' : 'none'}} className={styles.handSensor} />
+      <audio id="backsound-game" loop><source src="audios/concall.mp3" type="audio/mp3" /></audio>
+      <audio id="backsound-winner" loop><source src="audios/game-winner.mp3" type="audio/mp3" /></audio>
+      <audio id="backsound-loser" loop><source src="audios/game-over.mp3" type="audio/mp3" /></audio>
+      <audio id="backsound-catch" loop><source src="audios/flip-correct.mp3" type="audio/mp3" /></audio>
+      <img id="handSensor" src="imgs/hand-sensor.png" style={{display: page === 'game' ? 'block' : 'none'}} className={styles.handSensor} />
 
       {page === 'home' && (
-        <video src="/videos/itemfall-homepage2.mp4" onClick={() => changePage('game')} className={styles.videoBackground} autoPlay muted loop />
+        <video src="videos/itemfall-homepage2.mp4" onClick={() => changePage('game')} className={styles.videoBackground} autoPlay muted loop />
       )}
 
       {page === 'game' && (
         <>
-          <img src="/imgs/kvgames-itemfalls.jpg" className={styles.videoBackground} />
+          <img src="imgs/kvgames-itemfalls.jpg" className={styles.videoBackground} />
           {/* <img src="/imgs/framegames4.png" className={styles.frameGame4} /> */}
           <div className={styles.score}>
             <div> 
@@ -268,7 +268,7 @@ export default function Home()
                 YOUR SCORE: {Math.floor(score / 19)}
               </div>
               <video
-                src="/videos/itemfall-gameover.mp4"
+                src="videos/itemfall-gameover.mp4"
                 style={{
                   width: '80%',
                   borderRadius: '10px'
