@@ -247,7 +247,7 @@ export default function Home()
           {/* <img src="/imgs/framegames4.png" className={styles.frameGame4} /> */}
           <div className={styles.score}>
             <div> 
-            Score: {score ? Math.floor(score / 19) : 0}
+            Score: {score ? Math.floor(score / 4) : 0}
             </div>
             <div className={styles.countdown}>
             {countdown}
@@ -277,7 +277,7 @@ export default function Home()
               zIndex: 1000
             }}>
               <div className={styles.lastScore}>
-                YOUR SCORE: {Math.floor(score / 19)}
+                YOUR SCORE: {Math.floor(score / 4)}
               </div>
               <video
                 src="videos/itemfall-gameover.mp4"
