@@ -1,46 +1,14 @@
 [
     {
-        "name": "1.png",
-        "width": 110
+        "name": "serong-kiri.png",
+        "width": 480
     },
     {
-        "name": "2.png",
-        "width": 80
+        "name": "serong-kanan.png",
+        "width": 480
     },
     {
-        "name": "1.png",
-        "width": 110
-    },
-    {
-        "name": "2.png",
-        "width": 80
-    },
-    {
-        "name": "1.png",
-        "width": 110
-    },
-
-
-    
-    
-    {
-        "name": "4.png",
-        "width": 110
-    },
-    {
-        "name": "5.png",
-        "width": 80
-    },
-    {
-        "name": "6.png",
-        "width": 110
-    },
-    {
-        "name": "7.png",
-        "width": 80
-    },
-    {
-        "name": "8.png",
-        "width": 80
+        "name": "jahat.png",
+        "width": 520
     }
 ]

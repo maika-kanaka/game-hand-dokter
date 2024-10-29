@@ -15,14 +15,16 @@
   bottom: 7%;
   left: 50%;
   transform: translateX(-50%);
-  width: 125px;
+  width: 555px;
 }
 .score {
   position: fixed;
-  top: 5%;
+  top: 3%;
   left: 3%;
-  font-size: 40px;
+  font-size: 150px;
   color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px 80px;
 }
 .healthWrapper {
   position: fixed;
@@ -30,10 +32,10 @@
   right: 3%;
 }
 .health {
-  width: 20px;
+  width: 150px;
 }
 .lastScore {
-  font-size: 20px;
+  font-size: 100px;
   color: yellow;
   left: 50%;
   position: fixed;
